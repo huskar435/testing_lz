@@ -20,7 +20,7 @@ class Test_hand(unittest.TestCase):
     def test_text(self):
         self.assertEqual(hand("a", 1, 4), 'Ошибка типов данных')
         self.assertEqual(hand(1, "b", 4), 'Ошибка типов данных')
-        self.assertEqual(hand(1, 1, "text"), 'Ошибка типов данных')
+        self.assertEqual(hand(2, 1, "text"), 'Ошибка типов данных')
 
     def test_empty(self):
         self.assertEqual(hand("", 0, 4), 'Ошибка типов данных')
