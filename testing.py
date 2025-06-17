@@ -1,23 +1,30 @@
-from heand import hand
-import math
 import unittest
+from heand import hand
 
+class Test_hand(unittest.TestCase):
 
+    def test_by_zero(self):
+        self.assertEqual(hand(2, 2, 4), 'Деление на ноль')
+        self.assertEqual(hand(-2, -2, 4), 'Деление на ноль')
 
-class Test_func(unittest.TestCase):
-    def test_different_positive_integers(self):
-        self.assertEqual((4, 1, 9), (math.sqrt(3) / 3) + 3)
+    def test_all_zero(self):
+        self.assertEqual(hand(0, 0, 0), 'Деление на ноль')
 
-    def test_division_by_zero(self):
-        self.assertEqual((2, 2, 4), "Деление на ноль")
+    def test_normal(self):
+        self.assertEqual(hand(2, -2, 4), 2.5)
 
-    def test_negative_under_sqrt(self):
-        self.assertEqual((1, 3, 9), "Недопустимое значение под корнем")
-        self.assertEqual((5, 3, -4), "Недопустимое значение под корнем")
+    def test_negativet(self):
+        self.assertEqual(hand(1, 3, 9), 'Извлечение корня из отрицательного числа')
+        self.assertEqual(hand(1, 0, -5), 'Извлечение корня из отрицательного числа')
 
-    def test_floating_point(self):
-        self.assertEqual((0.1, 0.2, 0.3), "Недопустимое значение под корнем")
-        self.assertEqual((0.2, 0.1, 0.3), (math.sqrt(0.1) / 0.1) + math.sqrt(0.3))
+    def test_text(self):
+        self.assertEqual(hand("a", 1, 4), 'Ошибка типов данных')
+        self.assertEqual(hand(1, "b", 4), 'Ошибка типов данных')
+        self.assertEqual(hand(1, 1, "text"), 'Ошибка типов данных')
+
+    def test_empty(self):
+        self.assertEqual(hand("", 0, 4), 'Ошибка типов данных')
+        self.assertEqual(hand(1, "", 4), 'Ошибка типов данных')
 
 if __name__ == "__main__":
     unittest.main()
